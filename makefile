@@ -16,15 +16,15 @@ CXXSEP=-c
 all: p2
 
 p2: p2.cpp webserver.o loadbalancer.o request.h
-	$(CXX) $(CXXOUT) $(CXXFLAGS) $^
+	$(CXX) $(CXXOUT) $(CXXFLAGS) p2.cpp webserver.o loadbalancer.o
 
 # compile webserver.o
 webserver.o: webserver.cpp request.h
-	$(CXX) $(CXXSEP) $(CXXFLAGS) $^
+	$(CXX) $(CXXSEP) $(CXXFLAGS) webserver.cpp
 
 # compile loadbalancer.o
 loadbalancer.o: loadbalancer.cpp loadbalancer.h request.h
-	$(CXX) $(CXXSEP) $(CXXFLAGS) $^
+	$(CXX) $(CXXSEP) $(CXXFLAGS) loadbalancer.cpp
 
 # clean all *.o files and executable
 clean:
